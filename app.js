@@ -1,4 +1,4 @@
 alert(true);
-alert(true);
-alert(true);
+alertt(true);
+alertt(true);
 alert(true);
