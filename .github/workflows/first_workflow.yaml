@@ -1,5 +1,4 @@
 name: First Workflow
-run-name: First Workflow Run
 on: [push]
 
 jobs:
@@ -12,6 +11,11 @@ jobs:
         run: |
           node -v
           npm -v
+  parallel-job-macos:
+    runs-on: macos-latest
+    steps:
+      - name: echo a string
+        run: sw_vers
   dependant-job:
     runs-on: windows-latest
     needs: run-shell-command
