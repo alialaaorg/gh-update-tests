@@ -11,3 +11,10 @@ jobs:
         run: |
           node -v
           npm -v
+  dependant-job:
+    runs-on: windows-latest
+    steps:
+      - name: echo a string
+        run: Write-Output "Windows String"
+      - name: echo a string
+        run: echo "Windows String with echo"
