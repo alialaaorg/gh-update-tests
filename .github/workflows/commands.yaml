@@ -1,0 +1,11 @@
+name: Workflow Commands
+on: [push]
+
+jobs:
+  testing-wf-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Error Anotation
+        run: echo "::error::Missing semicolon"
+      - name: Create Error Anotation with Params
+        run: echo "::error file=app.js,line=1::Missing semicolon"
