@@ -14,4 +14,17 @@ jobs:
       - name: Setting a warning message
         run: echo "::warning title=Warning title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing semicolon"
       - name: Setting a notice message
-        run: echo "::notice title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing semicolon"
+        run: |
+          endToken=$(uuidgen)
+          echo "::stop-commands::$endToken"
+          echo "::notice title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing semicolon"
+          echo "::$endToken::"
+      - name: Group of log lines
+        run: |
+          echo "::group::My title"
+          echo "Inside group"
+          echo "::endgroup::"
+      - name: Masking a value
+        run: echo "::add-mask::Secret String"
+      - name: Echo a Masked  value
+        run: echo "Secret String"
