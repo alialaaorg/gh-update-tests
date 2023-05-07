@@ -19,6 +19,6 @@ jobs:
         run: |
           Get-Location 
           dir
-          Write-Output $GITHUB_SHA
-          Write-Output $GITHUB_REPOSITORY
-          Write-Output $GITHUB_WORKSPACE
+          Write-Output $env:GITHUB_SHA
+          Write-Output $env:GITHUB_REPOSITORY
+          Write-Output $env:GITHUB_WORKSPACE
