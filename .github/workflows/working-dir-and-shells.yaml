@@ -1,0 +1,14 @@
+name: Workflow Commands
+on: [push]
+
+jobs:
+  display-wd-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
