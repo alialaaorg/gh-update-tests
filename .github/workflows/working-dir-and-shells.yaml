@@ -17,8 +17,8 @@ jobs:
     steps:
       - name: List Files
         run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
+          Get-Location 
+          dir /ah
+          Write-Output $GITHUB_SHA
+          Write-Output $GITHUB_REPOSITORY
+          Write-Output $GITHUB_WORKSPACE
