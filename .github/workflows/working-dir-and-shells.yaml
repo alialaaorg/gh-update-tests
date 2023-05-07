@@ -18,7 +18,7 @@ jobs:
       - name: List Files
         run: |
           Get-Location 
-          dir /ah
+          dir /a:h
           Write-Output $GITHUB_SHA
           Write-Output $GITHUB_REPOSITORY
           Write-Output $GITHUB_WORKSPACE
