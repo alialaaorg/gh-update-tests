@@ -1,6 +1,9 @@
 name: Workflow Commands
 on: [push]
-
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
 jobs:
   display-wd-info:
     runs-on: ubuntu-latest
