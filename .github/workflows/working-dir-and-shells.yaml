@@ -10,11 +10,15 @@ jobs:
     steps:
       - name: List Files
         run: |
-          pwd
+
           ls -a
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
+      - name: Change WD
+        working-directory: /home/runner/work/gh-update-tests
+        run: pwd
+
   display-wd-info-windows:
     runs-on: windows-latest
     defaults:
@@ -22,7 +26,6 @@ jobs:
         shell: pwsh
     steps:
       - name: List Files
-        working-directory: /home/runner/work/gh-update-tests
         run: |
           Get-Location 
           dir
