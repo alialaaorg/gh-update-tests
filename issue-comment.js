@@ -1,14 +1,12 @@
-const fs = require("fs");
+const { getRandomJoke } = require("random-jokes");
 
-module.exports = ({ github, context }) => {
-  const issueComment = fs.readFileSync(
-    ".github/ISSUE_COMMENT/comment.md",
-    "utf8"
-  );
+module.exports = async ({ github, context }) => {
+  const joke = await getRandomJoke();
   github.rest.issues.createComment({
     issue_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
-    body: issueComment,
+    body: joke,
   });
+  return joke;
 };

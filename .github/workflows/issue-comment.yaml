@@ -8,12 +8,16 @@ jobs:
   issue-comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      #   - name: Checkout repo
+      #     uses: actions/checkout@v3
+      - run: npm i random-jokes
       - name: Comment on new issue
+        id: issue-comment
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const script = require('./issue-comment.js');
             script({github, context});
+      - name: Echo generated joke
+        run: echo ${{ steps.issue-comment.outputs.result }}
