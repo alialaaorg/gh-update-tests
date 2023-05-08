@@ -8,8 +8,8 @@ jobs:
   issue-comment:
     runs-on: ubuntu-latest
     steps:
-      #   - name: Checkout repo
-      #     uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
       - run: npm i random-jokes
       - name: Comment on new issue
         id: issue-comment
