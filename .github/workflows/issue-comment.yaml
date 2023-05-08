@@ -18,6 +18,6 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const script = require('./issue-comment.js');
-            script({github, context});
+            return script({github, context});
       - name: Echo generated joke
         run: echo ${{ steps.issue-comment.outputs.result }}
