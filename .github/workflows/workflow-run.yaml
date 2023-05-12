@@ -3,6 +3,8 @@ on:
   workflow_run:
     workflows: [Events]
     types: [completed]
+    branches:
+      - "main"
 
 jobs:
   checkout-action:

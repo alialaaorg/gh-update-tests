@@ -1,8 +1,25 @@
 name: Events
 on:
   push:
+    branches:
+      - master
+      - "feature/*" # matches featur/featA, feature/featB, doesn't match feature/feat/a
+      - "feature/**" # matches featur/featA, feature/featB, feature/feat/a
+      - "!feature/featC"
+    tags:
+      - v1.* # matches v1.1, v1.1.2
+      - "!v1.1.1"
+    paths:
+      - "**.js"
+      - "!filename.js"
+    # paths-ignore:
+    # - 'docs/**'
   pull_request:
     types: [opened, assigned, reopened, synchronize]
+    branches:
+      - "main"
+    paths:
+      - "**.js"
   issues:
     types: [opened]
 
