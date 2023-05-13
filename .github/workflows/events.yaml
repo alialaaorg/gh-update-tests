@@ -22,8 +22,6 @@ on:
       - "**.js"
   issues:
     types: [opened]
-  repository_dispatch:
-    types: [build]
 
 jobs:
   checkout-action:
