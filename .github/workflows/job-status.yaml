@@ -12,9 +12,9 @@ jobs:
       - name: Runs on Failure
         if: failure()
         run: echo 'Runs on Failure'
-      - name: Always Runs
-        if: always()
-        run: echo 'Always Runs'
+      # - name: Always Runs
+      #   if: always()
+      #   run: echo 'Always Runs'
       - name: Runs When Cancelled
         if: cancelled()
         run: echo 'Runs When Cancelled'
