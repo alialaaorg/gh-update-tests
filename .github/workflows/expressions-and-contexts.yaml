@@ -18,8 +18,11 @@ jobs:
           echo ${{ true || (false && true) }}
       - name: Dump Contexts
         run: |
+          stopMarker=$(uuidgen)
+          echo "::stop-commands::$stopMarker"
           echo ${{ toJson(github) }}
           echo ${{ toJson(job) }}
           echo ${{ toJson(secrets) }}
           echo ${{ toJson(steps) }}
           echo ${{ toJson(runner) }}
+          echo "::$stopMarker::"
