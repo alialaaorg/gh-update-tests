@@ -5,8 +5,8 @@ jobs:
   runs-on-issue:
     runs-on: ubuntu-latest
     # if: github.event_name == 'issues'
-    # if: github.event_name == 'push' || github.event_name == 'pull_request'
-    if: contains(fromJSON('["push", "pull_request"]'), github.event_name)
+    # if: github.event_name == 'issues' || github.event_name == 'pull_request'
+    if: contains(fromJSON('["issues", "pull_request"]'), github.event_name)
     steps:
       - name: Run only if issue has a bug label
         if: contains(github.event.issue.labels.*.name, 'bug')
