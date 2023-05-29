@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
     steps:
       - run: |
           echo $GITHUB_SHA
