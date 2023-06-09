@@ -15,7 +15,7 @@ on: [push]
 # X {os: ubuntu-latest, node-version: 14, is-ubuntu: true, experimental: false}
 # {os: ubuntu-latest, node-version: 15, is-ubuntu: true, experimental: false}
 # {os: ubuntu-latest, node-version: 16, is-ubuntu: true, experimental: true}
-# {os: macos-latest, node-version: 15, experimental: false}
+# {os: macos-latest, node-version: 15}
 
 jobs:
   node-matrix:
@@ -36,9 +36,11 @@ jobs:
           - os: ubuntu-latest
             node-version: 14
       # max-parallel: 3
-      fail-fast: false
+      fail-fast: true
     runs-on: ${{ matrix.os }}
     steps:
+      - if: matrix.experimental == true
+        run: exit 1
       - run: echo '${{ toJson(matrix) }}'
       - run: node -v
       - uses: actions/setup-node@v3
