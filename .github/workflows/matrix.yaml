@@ -25,8 +25,10 @@ jobs:
       - uses: actions/github-script@v6
         id: matrix-arrays
         with:
-          script: console.log(context)
+          script: "return { os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',')  }"
           result-encoding: json
+      - run: |
+          echo '${{ steps.matrix-arrays.outputs.result }}'
   node-matrix:
     strategy:
       matrix:
