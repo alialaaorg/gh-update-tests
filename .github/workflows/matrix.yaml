@@ -39,7 +39,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
-      - run: echo '${{ matrix }}'
+      - run: echo '${{ toJson(matrix) }}'
       - run: node -v
       - uses: actions/setup-node@v3
         with:
