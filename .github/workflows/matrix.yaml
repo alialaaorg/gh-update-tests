@@ -1,43 +1,41 @@
 name: Matrix
-on:
-  workflow_dispatch:
-    inputs:
-      os:
-        description: Operating Systems
-        default: "windows-latest, ubuntu-latest"
-        type: string
-      node-version:
-        description: Node Version
-        default: "14,15,16"
-        type: string
+on: [push]
+#------- ORIGINAL --------#
+# {os: windows-latest, node-version: 14}
+# {os: windows-latest, node-version: 15}
+# {os: windows-latest, node-version: 16}
+# {os: ubuntu-latest, node-version: 14}
+# {os: ubuntu-latest, node-version: 15}
+# {os: ubuntu-latest, node-version: 16}
+
+#------- After include/exclude --------#
+# {os: windows-latest, node-version: 14, experimental: false}
+# {os: windows-latest, node-version: 15, experimental: false}
+# {os: windows-latest, node-version: 16, experimental: false}
+# X {os: ubuntu-latest, node-version: 14, is-ubuntu: true, experimental: false}
+# {os: ubuntu-latest, node-version: 15, is-ubuntu: true, experimental: false}
+# {os: ubuntu-latest, node-version: 16, is-ubuntu: true, experimental: true}
+# {os: macos-latest, node-version: 15, experimental: false}
 
 jobs:
-  prepare-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix-arrays: ${{ steps.matrix-arrays.outputs.result }}
-    steps:
-      - run: echo "step-output=value" >> $GITHUB_OUTPUT
-        id: step-1
-      - run: echo "step-output=value 2" >> $GITHUB_OUTPUT
-        id: step-2
-      - run: |
-          echo '${{ steps.step-1.outputs.step-output }}'
-          echo '${{ steps.step-2.outputs.step-output }}'
-      - uses: actions/github-script@v6
-        id: matrix-arrays
-        with:
-          script: "return { os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',')  }"
-          result-encoding: json
-      - run: |
-          echo '${{ steps.matrix-arrays.outputs.result }}'
   node-matrix:
-    needs: prepare-matrix
     strategy:
       matrix:
-        os: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).os }}
-        node-version: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).node-version }}
-      # max-parallel: 3
+        os: [windows-latest, ubuntu-latest]
+        node-version: [14, 15, 16]
+        include:
+          - os: macos-latest
+            node-version: 15
+          - os: ubuntu-latest
+            is-ubuntu: true
+          - experimental: false
+          - os: ubuntu-latest
+            node-version: 16
+            experimental: true
+        exclude:
+          - os: ubuntu-latest
+            node-version: 14
+      max-parallel: 3
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
