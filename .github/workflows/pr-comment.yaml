@@ -7,7 +7,7 @@ jobs:
   checkout-action:
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: none
+      pull-requests: write
     steps:
       - run: |
           echo $GITHUB_SHA
