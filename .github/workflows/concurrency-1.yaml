@@ -7,7 +7,7 @@ on:
         type: environment
         required: true
 concurrency:
-  group: concurrency-1
+  group: ${{ inputs.environment }}
   cancel-in-progress: true
 jobs:
   sleep:
