@@ -1,0 +1,18 @@
+name: Reusable Workflow
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    outputs:
+      date:
+        description: "date output"
+        value: ${{ jobs.generate-output.outputs.date }}
+
+jobs:
+  generate-output:
+    runs-on: ubuntu-latest
+    # Map the job outputs to step outputs
+    outputs:
+      date: ${{ steps.date-step.outputs.date }}
+    steps:
+      - run: echo "date=$(date)" >> $GITHUB_OUTPUT
+        id: date-step
