@@ -1,10 +1,17 @@
 name: Calling Reusable Workflows
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "A username passed from the caller workflow"
+        default: "john-doe"
+        required: false
+        type: string
 
 jobs:
   call-workflow-passing-data:
     uses: alialaaorg/workflows/.github/workflows/reusable.yaml@main
     with:
-      username: "Ali"
+      username: ${{ inputs.username }}
     secrets:
       access-token: ${{ secrets.access-token }}
