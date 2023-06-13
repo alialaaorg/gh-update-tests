@@ -1,0 +1,10 @@
+name: Calling Reusable Workflows
+on: [push]
+
+jobs:
+  call-workflow-passing-data:
+    uses: alialaaorg/workflows/.github/workflows/reusable.yaml@main
+    with:
+      username: "Ali"
+    secrets:
+      access-token: ${{ secrets.access-token }}

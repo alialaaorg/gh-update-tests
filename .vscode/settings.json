@@ -1,4 +1,5 @@
 {
-    "editor.formatOnSave": true,
-    "yaml.completion": false
+  "editor.formatOnSave": true,
+  "yaml.completion": false,
+  "githubPullRequests.ignoredPullRequestBranches": ["main"]
 }
