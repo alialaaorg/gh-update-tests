@@ -14,7 +14,7 @@ jobs:
     with:
       username: ${{ inputs.username }}
     secrets:
-      access-token: ${{ secrets.access-token }}
+      access-token: ${{ secrets.ACCESS_TOKEN }}
   call-workflow-on-same-repo:
     uses: ./.github/workflows/reusable-workflow.yaml
     secrets: inherit
