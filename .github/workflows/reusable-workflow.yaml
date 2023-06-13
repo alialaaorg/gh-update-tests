@@ -13,7 +13,7 @@ jobs:
     with:
       username: "Ali"
     secrets:
-      access-token: ${{ secrets.access-token }}
+      access-token: ${{ secrets.ACCESS_TOKEN }}
   generate-output:
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
