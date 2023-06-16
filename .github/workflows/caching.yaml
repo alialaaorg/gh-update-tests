@@ -1,0 +1,17 @@
+name: Caching
+on: [workflow_dispatch]
+
+jobs:
+  use-axios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Use axios
+        uses: actions/github-script@v6
+        with:
+          script: |
+            import axios from 'axios'
+            const res = await axios('https://icanhazdadjoke.com/')
+            console.log(res.data)
