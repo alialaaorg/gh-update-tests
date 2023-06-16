@@ -29,6 +29,11 @@ jobs:
           name: code-coverage
           path: coverage
           retention-days: 10
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage
+      - run: ls -a
       - name: Use axios
         uses: actions/github-script@v6
         with:
