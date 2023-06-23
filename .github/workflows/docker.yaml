@@ -10,8 +10,8 @@ jobs:
         API_URL: some-url.com
       ports:
         - 80
-      # volumes:
-      #   - vol_name:/path/in/container
+      volumes:
+        - vol_name:/path/in/container
       #   - /path/in/container
       #   - /path/in/host:/path/in/container
       # options: --cpus 1
@@ -22,3 +22,8 @@ jobs:
           cat /etc/os-release
       - name: Log Env
         run: echo $API_URL
+      - name: Container in a Step
+        uses: docker://node:18.0-alpine3.17
+        with:
+          entrypoint: /usr/local/bin/node
+          args: -p '2+3'
