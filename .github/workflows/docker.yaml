@@ -10,10 +10,10 @@ jobs:
         API_URL: some-url.com
       ports:
         - 80
-      volumes:
-        - vol_name:/path/in/container
-        - /path/in/container
-        - /path/in/host:/path/in/container
+      # volumes:
+      #   - vol_name:/path/in/container
+      #   - /path/in/container
+      #   - /path/in/host:/path/in/container
       # options: --cpus 1
     steps:
       - name: Log Node & OS Versions
