@@ -19,4 +19,6 @@ jobs:
           node -v
           cat /etc/os-release
       - name: Create a File
-        run: pwd
+        run: |
+          cd /path/in/container
+          pwd
