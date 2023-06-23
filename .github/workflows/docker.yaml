@@ -25,5 +25,5 @@ jobs:
       - name: Container in a Step
         uses: docker://node:18.16-alpine3.17
         with:
-          entrypoint: /usr/local/bin/node
+          # entrypoint: /usr/local/bin/node
           args: -p '2+3'
