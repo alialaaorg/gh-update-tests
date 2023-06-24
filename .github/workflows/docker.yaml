@@ -38,6 +38,7 @@ jobs:
         with:
           entrypoint: cat
           args: text.txt
+      - uses: actions/checkout@v3
       - name: Show file contents
         uses: docker://node:18.16-alpine3.17
         with:
