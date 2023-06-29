@@ -9793,7 +9793,7 @@ const core = __nccwpck_require__(9330);
 const github = __nccwpck_require__(2057);
 
 try {
-  // throw( new Error("some error message"));
+  throw new Error("some error message");
   core.debug("Debug message");
   core.warning("Warning message");
   core.error("Error message");
