@@ -6,7 +6,6 @@ try {
   core.debug("Debug message");
   core.warning("Warning message");
   core.error("Error message");
-  console.log(`Hello ${name}`);
 
   const name = core.getInput("who-to-greet");
   console.log(`Hello ${name}`);
