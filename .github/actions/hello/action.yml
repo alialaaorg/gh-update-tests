@@ -10,7 +10,7 @@ outputs:
   time:
     description: "The time we greeted you"
 runs:
-  using: "node18"
+  using: "node16"
   pre: "setup.js"
   pre-if: runner.os == 'linux'
   main: "index.js"
