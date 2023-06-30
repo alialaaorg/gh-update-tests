@@ -6,6 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Send a Slack Message
+        uses: ./.github/actions/slack-php
+        with:
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          message: Hello Slack
       # - name: Simple JS Action
       #   id: greet
       #   uses: ./.github/actions/hello-docker
@@ -15,12 +20,12 @@ jobs:
       #   run: echo "${{ steps.greet.outputs.time }}"
       # - name: Log Env Var
       #   run: echo $HELLO_TIME
-      - name: Send joke on slack
-        id: slack-joke
-        uses: ./.github/actions/slack-joke
-        with:
-          # slack_username: alialaa
-          # upload_joke: true
-          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
-      - name: Log joke output
-        run: echo "${{ steps.slack-joke.outputs.joke }}"
+      # - name: Send joke on slack
+      #   id: slack-joke
+      #   uses: ./.github/actions/slack-joke
+      #   with:
+      #     # slack_username: alialaa
+      #     # upload_joke: true
+      #     slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+      # - name: Log joke output
+      #   run: echo "${{ steps.slack-joke.outputs.joke }}"
