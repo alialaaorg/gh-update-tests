@@ -2,7 +2,7 @@ name: Hello World
 author: Ali Alaa
 description: "Greet someone and record the time"
 inputs:
-  who-to-greet:
+  who_to_greet:
     description: "Who to greet"
     # required: true
     default: "World"
@@ -15,7 +15,7 @@ runs:
   image: 'Dockerfile'
   # entrypoint: 
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.who_to_greet }}
   env:
     HELLO: WORLD
   # pre-entrypoint: 'setup.sh'
