@@ -19,8 +19,8 @@ jobs:
         id: slack-joke
         uses: ./.github/actions/slack-joke
         with:
-          slack_username: alialaa
-          upload_joke: true
+          # slack_username: alialaa
+          # upload_joke: true
           slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
       - name: Log joke output
         run: echo "${{ steps.slack-joke.outputs.joke }}"

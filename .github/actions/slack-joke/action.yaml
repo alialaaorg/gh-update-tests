@@ -11,7 +11,7 @@ inputs:
 outputs:
   joke:
     description: "The generated joke."
-    value: ${{ steps.joke.outputs.random-number }}
+    value: ${{ steps.joke.outputs.random_joke }}
 runs:
   using: 'composite'
   steps: 
