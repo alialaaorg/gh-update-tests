@@ -20,5 +20,5 @@ runs:
     HELLO: WORLD
   # pre-entrypoint: 'setup.sh'
   # pre-if: runner.os == 'linux'
-  post-entrypoint: 'cleanup.sh'
+  post-entrypoint: ['/cleanup.sh']
   post-if: runner.os == 'linux'
