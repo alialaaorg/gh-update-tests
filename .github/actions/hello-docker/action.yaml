@@ -12,7 +12,7 @@ outputs:
 runs:
   using: 'docker'
   # image: 'docker://node:18.16-alpine3.17'
-  image: 'Dockerfile',
+  image: 'Dockerfile'
   # entrypoint: 
   args:
     - ${{ inputs.who-to-greet }}
