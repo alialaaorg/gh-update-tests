@@ -16,6 +16,7 @@ runs:
   using: 'composite'
   steps: 
     - name: Generate Joke
+      shell: bash
       id: joke
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
@@ -24,6 +25,7 @@ runs:
         echo "" >> "$GITHUB_ENV"
         echo "$EOF" >> "$GITHUB_OUTPUT"
     - name: Generate Joke File
+      shell: bash
       run: echo '${{ steps.joke.outputs.random-number }}' > joke.txt
       if: inputs.upload_joke
     - name: Upload Code Coverage
