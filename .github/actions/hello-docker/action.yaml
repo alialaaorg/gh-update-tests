@@ -1,0 +1,24 @@
+name: Hello World
+author: Ali Alaa
+description: "Greet someone and record the time"
+inputs:
+  who-to-greet:
+    description: "Who to greet"
+    # required: true
+    default: "World"
+outputs:
+  time:
+    description: "The time we greeted you"
+runs:
+  using: 'docker'
+  # image: 'docker://node:18.16-alpine3.17'
+  image: 'Dockerfile',
+  # entrypoint: 
+  args:
+    - ${{ inputs.who-to-greet }}
+  env:
+    HELLO: WORLD
+  # pre-entrypoint: 'setup.sh'
+  # pre-if: runner.os == 'linux'
+  post-entrypoint: 'cleanup.sh'
+  post-if: runner.os == 'linux'
