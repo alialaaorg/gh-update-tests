@@ -20,13 +20,13 @@ runs:
       id: joke
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "RANDOM_JOKE<<$EOF" >> "$GITHUB_OUTPUT"
+        echo "random_joke<<$EOF" >> "$GITHUB_OUTPUT"
         curl -s https://icanhazdadjoke.com/ >> "$GITHUB_OUTPUT"
         echo "" >> "$GITHUB_OUTPUT"
         echo "$EOF" >> "$GITHUB_OUTPUT"
     - name: Generate Joke File
       shell: bash
-      run: echo '${{ steps.joke.outputs.random-number }}' > joke.txt
+      run: echo '${{ steps.joke.outputs.random_joke }}' > joke.txt
       if: inputs.upload_joke
     - name: Upload Code Coverage
       uses: actions/upload-artifact@v3
@@ -39,5 +39,5 @@ runs:
       env:
         SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
         SLACK_TITLE: Random Joke
-        SLACK_MESSAGE: "${{inputs.slack_username && format('{0}{1}', '@', inputs.slack_username) || '' }}${{ steps.joke.outputs.random-number }}'"
+        SLACK_MESSAGE: "${{inputs.slack_username && format('{0}{1}', '@', inputs.slack_username) || '' }}${{ steps.joke.outputs.random_joke }}'"
         SLACK_COLOR: "#723fc4"
